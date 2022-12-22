@@ -28,7 +28,7 @@ def TestOneInput(data):
             elif choice == 3:
                 parser = FacebookMessengerParser(file_path)
                 parser.parse_file_into_df()
-    except (KeyError, UnicodeDecodeError, ParserError, JSONDecodeError, ValueError, TypeError, AttributeError):
+    except (KeyError, UnicodeDecodeError, ParserError, JSONDecodeError, ValueError, TypeError):
         return -1
 
 def main():
