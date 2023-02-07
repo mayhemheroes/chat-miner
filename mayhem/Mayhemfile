@@ -1,9 +1,9 @@
 project: chat-miner
-target: fuzz-app
+target: fuzz-chatminer
 testsuite:
     - file://mayhem/testsuite
 
 cmds:
-  - cmd: /src/mayhem/fuzz_app.py
+  - cmd: /src/mayhem/fuzz_chatminer.py
     libfuzzer: true
     timeout: 12

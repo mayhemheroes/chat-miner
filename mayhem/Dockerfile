@@ -5,4 +5,4 @@ ADD . /src
 WORKDIR /src
 RUN python3 -m pip install chat-miner
 
-CMD ["/src/mayhem/fuzz_app.py"]
+CMD ["/src/mayhem/fuzz_chatminer.py"]
