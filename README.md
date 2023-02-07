@@ -1,9 +1,18 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="doc/_static/logo-wide-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="doc/_static/logo-wide-light.png">
+  <img alt="chat-miner: turn your chats into artwork" src="doc/_static/logo-wide-light.png">
+</picture>
+
+-----------------
+
 # chat-miner: turn your chats into artwork
 
 [![PyPI Version](https://img.shields.io/pypi/v/chat-miner.svg)](https://pypi.org/project/chat-miner/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Downloads](https://static.pepy.tech/badge/chat-miner/month)](https://pepy.tech/project/chat-miner)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 **chat-miner** provides lean parsers for every major platform transforming chats into pandas dataframes. Artistic visualizations allow you to explore your data and create artwork from your chats.
 

@@ -1,19 +1,19 @@
 import calendar
 import datetime
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from wordcloud import WordCloud, STOPWORDS
 from dateutil.relativedelta import relativedelta
-from matplotlib.patches import Polygon
 from matplotlib.colors import ColorConverter, ListedColormap
-from mpl_toolkits.axes_grid1 import make_axes_locatable
-from matplotlib.patches import Circle, RegularPolygon
+from matplotlib.patches import Circle, Polygon, RegularPolygon
 from matplotlib.path import Path
-from matplotlib.projections.polar import PolarAxes
 from matplotlib.projections import register_projection
+from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
 from matplotlib.transforms import Affine2D
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+from wordcloud import STOPWORDS, WordCloud
 
 
 def sunburst(
@@ -149,17 +149,17 @@ def calendar_heatmap(
     if authors:
         df = df[df["author"].isin(authors)]
 
-    if not year in df["datetime"].dt.year.values:
-        available_years = df["datetime"].dt.year.unique()
+    if not year in df["timestamp"].dt.year.values:
+        available_years = df["timestamp"].dt.year.unique()
         raise ValueError(
             f"No message in year {year}. Available years: {available_years}"
         )
 
-    df = df[df["datetime"].dt.year == year]
-    df = df.groupby(by=df["datetime"].dt.date).count()["message"].reset_index()
+    df = df[df["timestamp"].dt.year == year]
+    df = df.groupby(by=df["timestamp"].dt.date).count()["message"].reset_index()
 
     idx = pd.date_range(start=str(year), end=str(year + 1), freq="D")[:-1]
-    df = df.set_index("datetime").reindex(idx)
+    df = df.set_index("timestamp").reindex(idx)
 
     if vmin is None:
         vmin = df.min()
@@ -318,7 +318,6 @@ def radar_factory(num_vars, frame="circle"):
             return Path(self.transform(path.vertices), path.codes)
 
     class RadarAxes(PolarAxes):
-
         name = "radar"
         PolarTransform = RadarTransform
 
