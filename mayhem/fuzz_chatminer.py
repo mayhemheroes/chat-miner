@@ -13,7 +13,7 @@ logging.disable(logging.CRITICAL)
 
 from contextlib import contextmanager
 with atheris.instrument_imports(include=['chatminer']):
-    from chatminer.chatparsers import WhatsAppParser, SignalParser, TelegramHtmlParser, FacebookMessengerParser
+    from chatminer.chatparsers import WhatsAppParser, SignalParser, TelegramJsonParser, FacebookMessengerParser
 
 from parser import ParserError
 
@@ -39,10 +39,10 @@ def TestOneInput(data):
             elif choice == 1:
                 parser = SignalParser(file_path)
             elif choice == 2:
-                parser = TelegramHtmlParser(file_path)
+                parser = TelegramJsonParser(file_path)
             elif choice == 3:
                 parser = FacebookMessengerParser(file_path)
-            parser.parse_file_into_df()
+            parser.parsed_messages.get_df()
     except (KeyError, UnicodeDecodeError, ParserError, JSONDecodeError, ValueError, TypeError):
         return -1
     except AttributeError as e:
